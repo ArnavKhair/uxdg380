@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { GlobalNav } from './GlobalNav';
 import { MusicPlayer } from './MusicPlayer';
-import { StateSwitcher } from '../dev/StateSwitcher';
 import styles from './AppShell.module.css';
 
 /** Layout shared by every screen: header, left nav, page content, player bar. */
@@ -19,7 +18,6 @@ export function AppShell() {
         </main>
       </div>
       <MusicPlayer />
-      <StateSwitcher />
     </div>
   );
 }

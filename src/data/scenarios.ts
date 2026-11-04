@@ -1,6 +1,6 @@
 /*
  * Edge-case scenarios. Each screen declares the states it can be forced into;
- * the State Switcher panel (src/dev/StateSwitcher.tsx) sets `?state=<id>` in the URL,
+ * add `?state=<id>` to a screen's URL (e.g. /feed?state=empty) to force one,
  * so any state can be bookmarked or shared with the team as a link.
  */
 export interface Scenario {
