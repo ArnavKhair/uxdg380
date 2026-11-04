@@ -1,0 +1,39 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 64px 24px;
+  border-top: 1px solid var(--grey-70);
+  border-bottom: 1px solid var(--grey-70);
+  text-align: center;
+}
+
+.error h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.error p {
+  max-width: 420px;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.icon {
+  color: var(--yellow-60);
+}
+
+/* Inside a section: same height as a row of song cards so the page doesn't jump */
+.compact {
+  justify-content: center;
+  min-height: 289px;
+  padding: 24px;
+  border: 1px dashed var(--grey-100);
+  border-radius: var(--radius-card);
+}
+
+.compact h2 {
+  font-size: 20px;
+}

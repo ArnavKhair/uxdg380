@@ -1,0 +1,24 @@
+.shell {
+  min-height: 100vh;
+}
+
+.body {
+  display: flex;
+}
+
+.nav {
+  position: sticky;
+  top: var(--header-height);
+  align-self: flex-start;
+  flex-shrink: 0;
+  width: var(--nav-width);
+  max-height: calc(100vh - var(--header-height) - var(--player-height));
+  overflow-y: auto;
+}
+
+/* 25px from the nav's own padding + 25px here = the 50px gap in the spacing notes */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-parent) var(--space-section) calc(var(--player-height) + var(--space-section)) var(--space-parent);
+}

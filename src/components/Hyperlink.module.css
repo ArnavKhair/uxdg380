@@ -1,0 +1,13 @@
+.link {
+  color: var(--yellow-50);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  transition: color 120ms;
+}
+
+/* "hover/active" variant */
+.link:hover,
+.link:active {
+  color: var(--yellow-80);
+}

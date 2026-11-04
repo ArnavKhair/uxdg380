@@ -1,0 +1,125 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-parent);
+  border-bottom: 3px solid var(--grey-100);
+  transition: background-color 120ms;
+}
+
+.row:first-child {
+  border-top: 3px solid var(--grey-100);
+}
+
+.row:hover,
+.current {
+  background: rgba(36, 32, 29, 0.6);
+}
+
+.hit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-parent);
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-parent);
+  text-align: left;
+}
+
+.rank {
+  display: flex;
+  justify-content: center;
+  width: 22px;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.current .rank {
+  color: var(--yellow-60);
+}
+
+.cover {
+  display: block;
+  width: 75px;
+  height: 75px;
+  flex-shrink: 0;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.cover svg {
+  width: 28px;
+  height: 28px;
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-atom);
+  min-width: 0;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.title,
+.artist {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.current .title {
+  color: var(--yellow-60);
+}
+
+.artist {
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 180px;
+  flex-shrink: 0;
+  margin-right: var(--space-parent);
+}
+
+.iconButton {
+  display: flex;
+  padding: 10px 20px;
+  border-radius: var(--radius-button);
+}
+
+.iconButton:hover,
+.iconButton[aria-expanded='true'] {
+  background: var(--yellow-100); /* Button "No border hover" */
+}
+
+.duration {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.skel {
+  display: block;
+  border-radius: var(--radius-card);
+  background: linear-gradient(90deg, var(--surface) 0%, var(--grey-100) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

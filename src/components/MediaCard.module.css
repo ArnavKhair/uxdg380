@@ -1,0 +1,137 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 225px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.hit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.cover {
+  position: relative;
+  display: block;
+  width: 225px;
+  height: 225px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+/* Album "shadow": a 207px Greyscale/100 square peeking out to the left of the cover */
+.stacked .cover {
+  overflow: visible;
+}
+
+.stacked .cover::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: -7px;
+  width: 207px;
+  height: 207px;
+  border-radius: var(--radius-card);
+  background: var(--grey-100);
+}
+
+.stacked .cover > * {
+  position: relative;
+}
+
+/* Always-visible play button on playlist cards: bottom-right of the cover */
+.fixedPlay {
+  position: absolute;
+  top: 144px;
+  left: 146px;
+  width: 58px;
+  height: 58px;
+  background: var(--yellow-50);
+  transition: transform 120ms;
+}
+
+.fixedPlay:hover {
+  transform: scale(1.06);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 55%);
+  opacity: 0;
+  transition: opacity 140ms;
+}
+
+.card:hover .overlay,
+.hit:focus-visible .overlay,
+.current .overlay {
+  opacity: 1;
+}
+
+.playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--yellow-50);
+  color: var(--grey-dark-0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-atom);
+  width: 100%;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.artist,
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  font-size: 16px;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.current .title {
+  color: var(--yellow-60);
+}
+
+.skel {
+  display: block;
+  border-radius: var(--radius-card);
+  background: linear-gradient(90deg, var(--surface) 0%, var(--grey-100) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

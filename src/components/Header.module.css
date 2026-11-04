@@ -1,0 +1,95 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--header-height);
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 500px) 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 0 var(--space-parent);
+  background: var(--bg);
+  border-bottom: 1px solid var(--header-border);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.plus {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 27px;
+  padding: 8px;
+  border-radius: 4px;
+  background: var(--border-subtle);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.plusMark {
+  color: var(--yellow-60);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 54px;
+  background: var(--input-bg);
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 2px var(--yellow-50);
+}
+
+.searchIcon {
+  color: var(--yellow-60);
+  flex-shrink: 0;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 6px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.search input::placeholder {
+  color: var(--text-placeholder);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-parent);
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+}
+
+/* "Hyperlink" component (Figma 262:2013) */
+.authLink {
+  padding: 10px; /* Hyperlink component padding */
+}
+
+.authDivider {
+  color: var(--grey-80);
+  font-size: 8px;
+}

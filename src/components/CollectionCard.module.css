@@ -1,0 +1,65 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-child);
+  width: 475px;
+  flex-shrink: 0;
+}
+
+.image {
+  display: block;
+  height: 267px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.image img {
+  transition: transform 300ms ease;
+}
+
+.card:hover .image img {
+  transform: scale(1.03);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  line-height: 1.2;
+}
+
+.title {
+  font-size: 31px;
+  font-weight: 700;
+  /* Long titles wrap to at most 3 lines (OMB Peezy title wraps to 3 in Figma) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card:hover .title {
+  color: var(--yellow-50);
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.skel {
+  display: block;
+  border-radius: var(--radius-card);
+  background: linear-gradient(90deg, var(--surface) 0%, var(--grey-100) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

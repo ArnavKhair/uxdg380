@@ -1,0 +1,87 @@
+.ad {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 982px; /* Figma "Ad Space" (262:2001) is 982 × 240 */
+  min-height: 240px;
+  padding: 40px 0;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  background: var(--surface-ad);
+  font-family: var(--font-ad);
+}
+
+/* Matches the Figma crop: 974×238 box, image at 138.5% width offset −16.79% */
+.art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 974px;
+  height: 238px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.art img {
+  position: absolute;
+  top: 0;
+  left: -16.79%;
+  width: 138.5%;
+  height: 100%;
+  max-width: none;
+}
+
+.copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 561px;
+  text-align: center;
+}
+
+.title {
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 29px;
+  letter-spacing: -1.5px;
+}
+
+.accent {
+  color: #ffa200;
+}
+
+.body {
+  max-width: 485px;
+  margin-top: 3px;
+  color: #ccc;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 26.6px;
+  letter-spacing: -0.5px;
+}
+
+.body strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.cta {
+  margin-top: 16px;
+  width: 286px;
+  height: 52px;
+  border-radius: 70px;
+  background: #ffa200;
+  color: var(--bg);
+  font-family: var(--font-ad);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.cta:hover {
+  background: var(--yellow-50);
+}

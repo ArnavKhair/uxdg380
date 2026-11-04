@@ -1,0 +1,42 @@
+.row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-atom);
+  padding: 0 var(--space-parent) var(--space-parent);
+}
+
+.time {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.wave {
+  position: relative;
+  flex: 1;
+  height: 38px;
+}
+
+/* The waveform PNG is used as a mask so it can be drawn in any colour. */
+.base,
+.played {
+  position: absolute;
+  inset: 0;
+  mask: var(--wave) 0 0 / 100% 100% no-repeat;
+  -webkit-mask: var(--wave) 0 0 / 100% 100% no-repeat;
+}
+
+.base {
+  background: var(--grey-90);
+}
+
+.wave:hover .base {
+  background: var(--grey-80);
+}
+
+.played {
+  background: var(--yellow-60);
+  transition: clip-path 1s linear;
+}

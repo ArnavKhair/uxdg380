@@ -1,0 +1,43 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  /* Full width: runs to the main area's 50px right margin (no max-width) */
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-parent);
+  min-width: 0;
+}
+
+/* Room for the album card's "shadow", which peeks 7px out to the left of the cover */
+.albumRow {
+  padding-left: 7px;
+  scroll-padding-left: 7px; /* so snapping doesn't nudge the row and show the back chevron */
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 289px;
+  padding: 24px;
+  border: 1px dashed var(--grey-100);
+  border-radius: var(--radius-card);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.emptyTitle {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.emptyAction {
+  margin-top: 8px;
+}

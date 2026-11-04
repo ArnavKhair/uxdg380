@@ -1,0 +1,75 @@
+.wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.scroller {
+  display: flex;
+  gap: var(--space-parent);
+  align-items: flex-start;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroller > * {
+  scroll-snap-align: start;
+}
+
+/* Chevron: an outline Button (Figma 195:5169) as a circle, centred on the cover art */
+.chevron {
+  position: absolute;
+  top: var(--chevron-top, 50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--yellow-50);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--yellow-10);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transform: translateY(-50%);
+  transition: border-color 120ms;
+}
+
+.chevron:hover {
+  border-color: var(--yellow-80); /* Button "Hover" */
+}
+
+.forward {
+  right: 8px;
+}
+
+.back {
+  left: 8px;
+}
+
+/* Fade the cut-off card under the chevron so it reads as "more this way" */
+.wrap:has(.forward)::after,
+.wrap:has(.back)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 96px;
+  pointer-events: none;
+}
+
+.wrap:has(.forward)::after {
+  right: 0;
+  background: linear-gradient(to right, transparent, var(--bg));
+}
+
+.wrap:has(.back)::before {
+  left: 0;
+  background: linear-gradient(to left, transparent, var(--bg));
+}

@@ -1,0 +1,130 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-card);
+  transition: background-color 150ms;
+}
+
+.card:hover,
+.current {
+  background: rgba(36, 32, 29, 0.6);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-parent);
+  padding: var(--space-parent);
+}
+
+.cover {
+  display: block;
+  width: 165px;
+  height: 165px;
+  flex-shrink: 0;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-child);
+  min-width: 0;
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-atom);
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.artist,
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.current .title {
+  color: var(--yellow-60);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-atom);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.tag {
+  padding: 5px;
+  border-radius: var(--radius-card);
+  background: var(--grey-70);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-atom);
+  flex-shrink: 0;
+}
+
+.iconButton {
+  display: flex;
+  padding: 10px 20px;
+  border-radius: var(--radius-button);
+}
+
+.iconButton:hover,
+.iconButton[aria-expanded='true'] {
+  background: var(--yellow-100); /* Button "No border hover" */
+}
+
+.current .iconButton:first-child {
+  color: var(--yellow-60);
+}
+
+.skel {
+  display: block;
+  border-radius: var(--radius-card);
+  background: linear-gradient(90deg, var(--surface) 0%, var(--grey-100) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skelWave {
+  padding: 0 var(--space-parent) var(--space-parent);
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

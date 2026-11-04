@@ -1,0 +1,65 @@
+/*
+ * Design tokens, taken from the "Design System" page in Figma
+ * (Yellow 101:3433, Greyscale 101:3378, Instrument Sans 101:3488, spacing notes 163:121).
+ * Use these variables instead of raw values so a change here updates every screen.
+ */
+:root {
+  /* Yellow */
+  --yellow-10: #fff5e5;
+  --yellow-20: #ffe5b8;
+  --yellow-30: #ffd48a;
+  --yellow-40: #ffc35d;
+  --yellow-50: #ffb32f;
+  --yellow-60: #ffa202;
+  --yellow-70: #d68800;
+  --yellow-80: #ad6e00;
+  --yellow-90: #855400;
+  --yellow-100: #5c3a00;
+
+  /* Greyscale */
+  --grey-10: #f4f3f3;
+  --grey-20: #f2ece7;
+  --grey-30: #dbd4cd;
+  --grey-40: #c4bcb5;
+  --grey-50: #aea49d;
+  --grey-60: #978d86;
+  --grey-70: #80776f;
+  --grey-80: #6a615a;
+  --grey-90: #534b45;
+  --grey-100: #3c3631;
+  --grey-dark-0: #24201d;
+
+  /* Surfaces */
+  --bg: #0d0d0d;
+  --surface: #24201d;
+  --surface-hover: #3c3631;
+  --surface-ad: #121212;
+  --input-bg: #222222;
+  --header-border: #2b2b2b;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --text: #ffffff;
+  --text-muted: var(--grey-60);
+  --text-placeholder: var(--grey-50);
+  --danger: #ff6b5a;
+
+  /* Type */
+  --font: 'Instrument Sans', system-ui, sans-serif;
+  --font-ad: 'Open Sans', system-ui, sans-serif;
+
+  /* Spacing (from the "Margins / spacing" note) */
+  --space-atom: 5px;
+  --space-child: 15px;
+  --space-parent: 25px; /* left/top margin, stacked content */
+  --space-section: 50px; /* nav → content gap, between sections */
+
+  /* Radii */
+  --radius-card: 8px;
+  --radius-button: 13px;
+  --radius-nav: 20px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --header-height: 96px;
+  --nav-width: 382px; /* 332px items + 25px padding each side */
+  --player-height: 130px;
+}

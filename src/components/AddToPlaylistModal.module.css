@@ -1,0 +1,176 @@
+.song {
+  margin-top: -12px;
+  color: var(--grey-50);
+  font-size: 16px;
+}
+
+.song strong {
+  color: var(--text);
+}
+
+.create {
+  display: flex;
+  justify-content: center;
+}
+
+/* "Create new playlist" button (Figma 513:4287) */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  color: #f4f4f4;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 48px;
+  margin-left: 56px;
+  padding: 0 16px;
+  border-radius: 54px;
+  background: var(--input-bg);
+  color: var(--yellow-60);
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 2px var(--yellow-50);
+}
+
+.search input {
+  flex: 1;
+  padding: 12px 6px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+}
+
+.search input::placeholder {
+  color: #ccc;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 360px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.rowHit {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex: 1;
+  padding: 8px;
+  margin: -8px;
+  border-radius: var(--radius-card);
+  text-align: left;
+}
+
+.rowHit:hover {
+  background: var(--surface);
+}
+
+/* Small stacked cover (82px with two bars above) */
+.cover {
+  position: relative;
+  display: block;
+  width: 82px;
+  height: 82px;
+  margin-top: 11px;
+  flex-shrink: 0;
+}
+
+.cover::before,
+.cover::after {
+  content: '';
+  position: absolute;
+  height: 6px;
+}
+
+.cover::before {
+  top: -6px;
+  left: 2px;
+  right: 2px;
+  background: #444;
+}
+
+.cover::after {
+  top: -11px;
+  left: 9px;
+  right: 9px;
+  background: var(--border-subtle);
+}
+
+.cover img,
+.cover > span {
+  border-radius: 3px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  color: #f4f4f4;
+  font-size: 16px;
+  line-height: 20.8px;
+  letter-spacing: -0.5px;
+}
+
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 700;
+}
+
+.state {
+  display: flex;
+  margin-right: 8px;
+}
+
+.added {
+  color: var(--yellow-60);
+}
+
+/* The open icon sits left of the add/check icon, as in Figma */
+.open {
+  position: absolute;
+  right: 57px;
+  display: flex;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.open:hover {
+  background: var(--yellow-100); /* Button "No border hover" */
+}
+
+.end {
+  padding-bottom: 8px;
+  color: #f4f4f4;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+}

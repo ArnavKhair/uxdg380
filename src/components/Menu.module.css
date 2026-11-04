@@ -1,0 +1,46 @@
+.root {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+  animation: in 120ms ease-out;
+}
+
+.item {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.item:hover,
+.item:focus-visible {
+  color: var(--yellow-50);
+  outline: none;
+}
+
+.danger {
+  color: var(--danger);
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}

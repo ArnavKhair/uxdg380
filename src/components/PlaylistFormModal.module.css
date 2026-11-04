@@ -1,0 +1,227 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-parent);
+}
+
+.top {
+  display: flex;
+  gap: var(--space-parent);
+  padding-top: 17px;
+}
+
+/* 328px cover box: image underneath a near-black overlay with camera + copy */
+.cover {
+  position: relative;
+  width: 328px;
+  height: 328px;
+  flex-shrink: 0;
+  border: 1px solid #2a2929;
+}
+
+.coverImage {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.coverOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #f4f4f4;
+  font-family: var(--font-ad);
+  text-align: center;
+}
+
+.coverOverlay strong {
+  margin-top: 13px;
+  font-size: 19px;
+  line-height: 24.7px;
+  letter-spacing: -0.5px;
+}
+
+.coverOverlay span {
+  margin-top: 7px;
+  color: #bdbdbd;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+}
+
+.coverButton {
+  margin-top: 25px;
+  font-family: var(--font); /* the cover panel uses Open Sans; Button text is Instrument Sans */
+}
+
+.coverRemove {
+  margin-top: 8px;
+  color: var(--grey-50);
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.coverError {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -26px;
+  color: var(--danger);
+  font-size: 14px;
+  text-align: center;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-parent);
+  flex: 1;
+  min-width: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.field label {
+  color: #f4f4f4;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.8px;
+  letter-spacing: -0.5px;
+}
+
+.required {
+  color: #bd3638;
+}
+
+.input {
+  height: 59px;
+  padding: 0 19px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  outline: none;
+  background: var(--input-bg);
+  color: #f4f4f4;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.input:focus {
+  border-color: var(--yellow-50);
+}
+
+.input::placeholder {
+  color: #909090;
+}
+
+.nameInput {
+  background: #333;
+}
+
+.invalid,
+.invalid:focus {
+  border-color: var(--danger);
+}
+
+.error {
+  color: var(--danger);
+  font-size: 14px;
+}
+
+/* Native select restyled to match the Figma dropdown (chevron drawn as a rotated border) */
+.select {
+  appearance: none;
+  border-radius: 10px;
+  background-image: linear-gradient(45deg, transparent 50%, #696969 50%, #696969 60%, transparent 60%),
+    linear-gradient(-45deg, transparent 50%, #696969 50%, #696969 60%, transparent 60%);
+  background-position:
+    calc(100% - 30px) 50%,
+    calc(100% - 22px) 50%;
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.select option {
+  background: var(--input-bg);
+}
+
+.descriptionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.descriptionHead em {
+  color: #aaa;
+  font-family: var(--font-ad);
+  font-size: 14px;
+  letter-spacing: -0.5px;
+}
+
+.descriptionHead .lowCount {
+  color: var(--yellow-50);
+}
+
+.textarea {
+  height: 72px;
+  min-height: 72px;
+  padding: 21px 19px;
+  resize: vertical;
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.deleteLink {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--danger);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.deleteLink:hover {
+  text-decoration: underline;
+}
+
+.buttons {
+  display: flex;
+  gap: var(--space-section);
+}
+
+/* Destructive confirm: outline Button in the danger colour */
+.buttons .danger {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.buttons .danger:hover:not(:disabled) {
+  border-color: #ff8577;
+  color: #ff8577;
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 20px;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  font-size: 18px;
+  font-weight: 600;
+}

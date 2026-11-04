@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--grey-10);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.title {
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.titleLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-atom);
+}
+
+.titleLink:hover {
+  color: var(--yellow-50);
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}

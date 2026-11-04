@@ -1,0 +1,76 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  max-width: 1366px;
+}
+
+/* Figma: heading at y=121, list at y=190 → ~40px gap, tighter than the section gap */
+.heading {
+  margin-bottom: calc(40px - var(--space-section));
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Empty feed */
+.emptyIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emptyTitle {
+  color: #ffa200;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.emptySubtitle {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-parent);
+}
+
+.sectionHead h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+
+.suggestionRow {
+  display: flex;
+  gap: 27px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-color: var(--grey-100) transparent;
+}
+
+.suggestionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 225px);
+  gap: 32px 27px;
+}
+
+.followedBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 24px;
+  border-radius: var(--radius-nav);
+  background: var(--surface);
+  font-size: 16px;
+}

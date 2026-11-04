@@ -1,0 +1,191 @@
+/*
+ * Album-only styles. The hero, pills, play/shuffle buttons, track list, skeletons and
+ * blocked state come from PlaylistPage.module.css so both screens stay in sync.
+ */
+
+/* Header text: "Song cards → Card Expanded" (401:5039) */
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.kind {
+  display: flex;
+  align-items: center;
+  gap: var(--space-atom);
+  color: var(--yellow-60);
+  font-size: 13px; /* Note */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.artistLine {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 25px; /* Body 3 */
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 39px; /* H3 */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: var(--grey-30);
+  font-size: 16px; /* Body (Base) */
+  font-weight: 500;
+}
+
+.tag {
+  padding: 2px var(--space-atom);
+  border-radius: 4px;
+  background: var(--grey-70);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.heroText .pills {
+  padding-left: 0;
+}
+
+/* Artist + details + stats (from "Song page - MCR Helena", 439:4361) */
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-parent);
+  margin-top: var(--space-section);
+}
+
+.artistRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-parent);
+}
+
+.artistCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.artistCard > span:first-child {
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle);
+}
+
+.artistText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.artistName {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 31px; /* H4 */
+}
+
+.followers {
+  color: var(--text-muted);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.followers b {
+  color: var(--yellow-60);
+  font-weight: 500;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.details div {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+}
+
+.details dt {
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.details dd {
+  margin: 0;
+  color: #cacaca;
+  font-size: 14px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-section);
+  margin: 0;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-atom);
+}
+
+.stats dt {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--yellow-60);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* "More albums like this" */
+.more {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-parent);
+  margin-top: 70px;
+  padding-bottom: var(--space-section);
+}
+
+.cards {
+  display: flex;
+  gap: var(--space-parent);
+  overflow-x: auto;
+  padding: 8px 0 0 7px; /* room for the album "shadow" */
+  scrollbar-width: none;
+}

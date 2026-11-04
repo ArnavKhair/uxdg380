@@ -1,0 +1,334 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1366px;
+}
+
+/* Header card: blurred cover behind a black gradient (Figma "Article:mask-group") */
+.hero {
+  position: relative;
+  height: 258px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  background: #000;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+}
+
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(15px);
+  transform: scale(1.15);
+}
+
+.heroBg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), var(--bg));
+}
+
+.heroContent {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  height: 100%;
+  padding: 25px 140px 25px 25px;
+}
+
+.cover {
+  position: relative;
+  width: 208px;
+  height: 208px;
+  flex-shrink: 0;
+}
+
+.cover::before,
+.cover::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+}
+
+.cover::before {
+  top: -4px;
+  left: 5px;
+  right: 5px;
+  background: #444;
+}
+
+.cover::after {
+  top: -8px;
+  left: 10px;
+  right: 10px;
+  background: var(--border-subtle);
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-width: 0;
+  padding-top: 22px; /* label sits above the title; title keeps its Figma position */
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.visibility {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px; /* Note */
+  font-weight: 500;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 39px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pills {
+  display: flex;
+  gap: 10px;
+  padding-left: 17px;
+}
+
+/* Play + shuffle overlap the bottom-right edge of the header */
+.bigButtons {
+  position: absolute;
+  right: 24px;
+  bottom: -40px;
+  display: flex;
+  gap: 16px;
+}
+
+.playBig,
+.shuffleBig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transition: transform 120ms;
+}
+
+.playBig {
+  background: #ffa200;
+  color: #000;
+}
+
+.shuffleBig {
+  background: #1d1d1d;
+}
+
+.playBig:hover,
+.shuffleBig:hover {
+  transform: scale(1.05);
+}
+
+.tracks {
+  display: flex;
+  flex-direction: column;
+  margin: 72px 0 0; /* clears the play/shuffle buttons overlapping the header */
+  padding: 0;
+  list-style: none;
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 60px;
+  padding: 48px 24px;
+  border: 1px dashed var(--grey-100);
+  border-radius: var(--radius-card);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.empty button {
+  margin-top: 12px;
+}
+
+.emptyIcon {
+  color: var(--yellow-60);
+}
+
+.emptyTitle {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* "UPLOADED BY" block */
+.owner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.ownerHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+.ownerHead h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.ownerCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ownerCard > span:first-child {
+  border: 1px solid var(--border-subtle);
+}
+
+.ownerText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ownerName {
+  font-size: 25px;
+}
+
+.ownerCard:hover .ownerName {
+  text-decoration: underline;
+}
+
+.ownerFollowers {
+  color: #666;
+  font-size: 20px;
+}
+
+.ownerFollowers b {
+  color: #ffa200;
+}
+
+.tag {
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: var(--input-bg);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 720px;
+  color: #cacaca;
+  font-size: 16px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.details div {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.details dt {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.details dd {
+  margin: 0;
+  color: #cacaca;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.blocked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 120px 24px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.blocked h1 {
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.blocked p {
+  margin-bottom: 12px;
+}
+
+.skel {
+  display: block;
+  border-radius: var(--radius-card);
+  background: linear-gradient(90deg, var(--surface) 0%, var(--grey-100) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skelRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  padding-left: 52px;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

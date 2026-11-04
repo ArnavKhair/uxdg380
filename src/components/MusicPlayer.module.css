@@ -1,0 +1,190 @@
+.player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  height: var(--player-height);
+  background: var(--surface);
+}
+
+.track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 6px;
+}
+
+/* Taller invisible hit area so the 6px bar is easy to click */
+.track::before {
+  content: '';
+  position: absolute;
+  inset: -6px 0 -4px;
+}
+
+.track:not(:disabled):hover {
+  background: var(--grey-100);
+}
+
+.progress {
+  display: block;
+  height: 100%;
+  background: var(--yellow-50);
+  transition: width 1s linear;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--player-height) - 6px);
+  padding: 0 var(--space-parent);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-parent);
+  min-width: 0;
+}
+
+.controls {
+  display: flex;
+  gap: var(--space-atom);
+}
+
+.control {
+  display: flex;
+  padding: var(--space-parent);
+  border-radius: 50%;
+  color: var(--text);
+}
+
+.control:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+.control:disabled {
+  color: var(--grey-80);
+}
+
+.song {
+  display: flex;
+  align-items: center;
+  gap: var(--space-child);
+  width: 299px;
+}
+
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey-70);
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  border-radius: var(--radius-card);
+  object-fit: cover;
+  background: var(--grey-100);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-atom);
+  min-width: 0;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.artist,
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  font-size: 16px;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.time {
+  color: var(--text-muted);
+  font-size: 13px; /* Note */
+  font-variant-numeric: tabular-nums;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-child);
+}
+
+.queueWrap {
+  position: relative;
+}
+
+.queue {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 16px);
+  width: 340px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding: 16px;
+  border-radius: var(--radius-nav);
+  background: var(--surface);
+  border: 1px solid var(--grey-100);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+.queueHeading {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.queueEmpty {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.queue ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.queue li button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-card);
+  text-align: left;
+}
+
+.queue li button:hover {
+  background: var(--surface-hover);
+}
+
+.queueCurrent .queueTitle {
+  color: var(--yellow-60);
+}
+
+.queueTitle {
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.queueArtist {
+  color: var(--text-muted);
+  font-size: 14px;
+}

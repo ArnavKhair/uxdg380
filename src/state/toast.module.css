@@ -1,0 +1,26 @@
+.region {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--player-height) + 24px);
+  transform: translateX(-50%);
+  z-index: 70; /* above modals (60) */
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--grey-10);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: var(--radius-button);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  animation: in 160ms ease-out;
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

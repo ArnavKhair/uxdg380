@@ -1,0 +1,94 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.lg {
+  gap: var(--space-child);
+  width: 225px;
+}
+
+.sm {
+  gap: 11px;
+  width: 127px;
+}
+
+.avatarLink {
+  border-radius: 50%;
+  transition: opacity 120ms;
+}
+
+.avatarLink:hover {
+  opacity: 0.85;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+
+.lg .info {
+  gap: 8px;
+}
+
+.sm .info {
+  gap: 6px;
+}
+
+.name {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 700;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.lg .name {
+  font-size: 16px;
+}
+
+.sm .name {
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lg .actions {
+  gap: 6px;
+  width: 130px;
+}
+
+.sm .actions {
+  gap: 4px;
+  width: 127px;
+}
+
+.followers {
+  color: var(--text-muted);
+}
+
+.lg .followers {
+  font-size: 14px;
+}
+
+.sm .followers {
+  font-size: 12px;
+}
+
+/* FOLLOWING doesn't fit at 20px side padding inside a 127px card */
+.sm button {
+  padding-left: 8px;
+  padding-right: 8px;
+}

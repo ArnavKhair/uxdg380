@@ -1,0 +1,62 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 2px solid var(--yellow-50);
+  border-radius: var(--radius-button);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    background-color 120ms,
+    color 120ms,
+    border-color 120ms;
+}
+
+.button svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.outline {
+  color: var(--yellow-10);
+}
+
+/* "Hover" variant */
+.outline:hover:not(:disabled) {
+  border-color: var(--yellow-80);
+}
+
+.filled {
+  background: var(--yellow-60);
+  border-color: var(--yellow-60);
+  color: var(--grey-dark-0);
+}
+
+.filled:hover:not(:disabled) {
+  background: var(--yellow-50);
+  border-color: var(--yellow-50);
+}
+
+/* "no border default" / "No border hover" variants */
+.ghost {
+  border-color: transparent;
+  color: var(--yellow-10);
+}
+
+.ghost:hover:not(:disabled),
+.ghost[aria-expanded='true'] {
+  background: var(--yellow-100);
+}
+
+.button:disabled {
+  opacity: 0.4;
+}
+
+.fullWidth {
+  width: 100%;
+}

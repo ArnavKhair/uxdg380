@@ -1,0 +1,123 @@
+.page {
+  max-width: 1366px;
+}
+
+/* Tabs: 200px each, 5px Yellow/70 underline on the active one */
+.tabs {
+  display: flex;
+  margin-top: 20px;
+  padding-left: 15px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab {
+  flex-shrink: 0;
+  width: 200px;
+  padding: 25px 10px 20px;
+  border-bottom: 5px solid transparent;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  transition: border-color 120ms;
+}
+
+.tab:hover {
+  border-bottom-color: var(--grey-100);
+}
+
+.activeTab,
+.activeTab:hover {
+  border-bottom-color: var(--yellow-70);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px 0 0 15px;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20.8px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+/* Song cards carry their own 25px padding; pull the list left so covers align with the heading */
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-left: -25px;
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.playlists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 127px);
+  gap: 32px 44px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 56px 24px;
+  border: 1px dashed var(--grey-100);
+  border-radius: var(--radius-card);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.empty button {
+  margin-top: 12px;
+}
+
+.emptyTitle {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 120px 24px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.notFound h1 {
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.notFound p {
+  margin-bottom: 12px;
+}
+
+.notFoundIcon {
+  color: var(--yellow-60);
+}
+
+/* "Create new playlist" tile, same footprint as a playlist card */
+.newPlaylist {
+  align-self: flex-start;
+}

@@ -1,0 +1,35 @@
+.filters {
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 35px;
+  padding: 0 var(--space-child);
+  border: 2px solid var(--yellow-50);
+  border-radius: 100px;
+  color: var(--yellow-10);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: background-color 120ms;
+}
+
+/* "Hover" variant */
+.pill:hover:not(.selected) {
+  border-color: var(--yellow-80);
+  color: var(--grey-40);
+}
+
+.selected {
+  background: var(--yellow-60);
+  border-color: var(--yellow-60);
+  color: #000;
+}
