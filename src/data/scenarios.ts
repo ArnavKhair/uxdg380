@@ -64,6 +64,13 @@ export const screenScenarios: Record<string, Scenario[]> = {
     { id: 'long-text', label: 'Very long text', description: 'Long album, artist, label and song names' },
     { id: 'missing-art', label: 'Missing artwork', description: 'Cover and song art fail to load' },
   ],
+  search: [
+    { id: 'default', label: 'Live results', description: 'Live search (try “Ariana Grande” or “goose”)' },
+    { id: 'loading', label: 'Loading', description: 'Skeleton results while the search runs' },
+    { id: 'error', label: 'Failed to load', description: 'Search request failed, with retry' },
+    { id: 'no-results', label: 'No results', description: '“Sorry we couldn’t find any…” for every tab' },
+    { id: 'slow', label: 'Slow connection', description: '2.5s delay so the loading state is easy to see' },
+  ],
   profile: profileScenarios(),
   user: profileScenarios(),
 };

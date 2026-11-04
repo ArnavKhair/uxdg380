@@ -1,0 +1,546 @@
+/* Content column of the "search bar" frames: starts at x=398 (nav 382 + 16), 1000px wide */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1000px;
+}
+
+/* "Local nav" (Figma 453:5242): 200px tabs, 5px yellow-70 underline on the active one */
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab {
+  flex-shrink: 0;
+  width: 200px;
+  padding: 25px 10px 20px;
+  border-bottom: 5px solid transparent;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  transition: border-color 120ms;
+}
+
+.tab:hover {
+  border-bottom-color: var(--grey-100);
+}
+
+.activeTab,
+.activeTab:hover {
+  border-bottom-color: var(--yellow-70);
+}
+
+/* "Results Matching “…“" (253:2184): Open Sans Bold 23px, query in #ffa200 */
+.matching {
+  font-family: var(--font-ad);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 22.8px;
+  letter-spacing: -0.5px;
+}
+
+.query {
+  color: #ffa200;
+}
+
+/* No-results message (539:5888): Bold 25px */
+.sorry {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+/* "Accounts" / "PLAYLISTS" / "SONGS & ALBUMS": Body 5, Bold 20px */
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.iconButton {
+  display: flex;
+  padding: 4px;
+  border-radius: 6px;
+  color: var(--text);
+}
+
+.iconButton:hover,
+.iconButton[aria-expanded='true'] {
+  background: var(--border-subtle);
+}
+
+/* ---- Accounts (539:5287) ---- */
+.topAccount {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.topAvatar {
+  display: flex;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: opacity 120ms;
+}
+
+.topAvatar:hover {
+  opacity: 0.85;
+}
+
+.topInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.topNameRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+}
+
+.topName {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 39px; /* H3 */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.topName:hover {
+  text-decoration: underline;
+}
+
+.verified {
+  flex-shrink: 0;
+  color: var(--yellow-60);
+}
+
+.topFollowers {
+  color: #999;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+/* "Button" (539:5292): 2px yellow-50 outline, 13px radius */
+.followButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 2px solid var(--yellow-50);
+  border-radius: var(--radius-button);
+  color: var(--yellow-10);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  transition: background-color 120ms;
+}
+
+.followButton:hover {
+  border-color: var(--yellow-80);
+}
+
+.following,
+.following:hover {
+  background: var(--yellow-60);
+  border-color: var(--yellow-60);
+  color: var(--grey-dark-0);
+}
+
+/* ---- Playlist cards, "Card Template" (539:5296) ---- */
+.cardRow,
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.cards {
+  row-gap: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 225px;
+}
+
+.cardCover {
+  display: block;
+  width: 225px;
+  height: 225px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.cardCover img {
+  border-radius: var(--radius-card);
+}
+
+.card:hover .cardCover img {
+  filter: brightness(1.1);
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  letter-spacing: -0.25px;
+}
+
+.cardTitle,
+.cardSubtitle {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card:hover .cardTitle {
+  color: var(--yellow-50);
+}
+
+.cardSubtitle {
+  font-size: 16px;
+}
+
+/* ---- Song / album rows (539:5319–539:5364) ---- */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
+}
+
+.paged > .rows {
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rowMain {
+  display: flex;
+  gap: 24px;
+}
+
+.rowCover {
+  flex-shrink: 0;
+  display: block;
+  width: 208px;
+  height: 208px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.rowCover img {
+  border-radius: var(--radius-card);
+}
+
+.rowCover:hover img {
+  filter: brightness(1.1);
+}
+
+.rowInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  padding-top: 12px;
+}
+
+/* "Regular 23" — Open Sans */
+.rowArtist {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: var(--font-ad);
+  font-size: 23px;
+  line-height: 22.8px;
+  letter-spacing: -0.5px;
+}
+
+/* "Body 3" in bold */
+.rowTitle {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.rowTitle a:hover {
+  text-decoration: underline;
+}
+
+.current .rowTitle {
+  color: var(--yellow-60);
+}
+
+.rowMeta {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.uploader {
+  color: #ffa200;
+}
+
+/* Genre link (539:5325): #333, 4px radius, 13px bold uppercase */
+.tag {
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #333;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+/* Like / Playlist / Share / Re-Up / … (247:1437 etc.): 36px, 2px #6a615a border, pill radius */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border: 2px solid var(--grey-80);
+  border-radius: 100px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  transition:
+    border-color 120ms,
+    color 120ms;
+}
+
+.pill:hover,
+.pill[aria-expanded='true'] {
+  border-color: var(--grey-50);
+}
+
+.pillOn,
+.pillOn:hover {
+  border-color: var(--yellow-60);
+  color: var(--yellow-60);
+}
+
+/* Play button + waveform under the cover (539:5335) */
+.wave {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wave > :last-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.playCircle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--text);
+  border-radius: 50%;
+  transition:
+    border-color 120ms,
+    color 120ms;
+}
+
+.playCircle:hover,
+.current .playCircle {
+  border-color: var(--yellow-60);
+  color: var(--yellow-60);
+}
+
+/* ---- Profile grid (631:8433): 91px avatars on a 141px pitch ---- */
+.paged {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.paged > * {
+  align-self: stretch;
+}
+
+.paged > .loadMore {
+  align-self: center;
+}
+
+.people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 116px);
+  gap: 32px 25px;
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  min-width: 0;
+}
+
+.personAvatar {
+  display: flex;
+  border-radius: 50%;
+  transition: opacity 120ms;
+}
+
+.personAvatar:hover {
+  opacity: 0.85;
+}
+
+.personInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+}
+
+.personText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+}
+
+.personName {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.personName:hover {
+  text-decoration: underline;
+}
+
+.personFollowers {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* "Filters" pill used as FOLLOW (631:8440): 35px, 2px yellow-50 border, 13px uppercase */
+.pillButton {
+  display: inline-flex;
+  align-items: center;
+  height: 35px;
+  padding: 0 15px;
+  border: 2px solid var(--yellow-50);
+  border-radius: 100px;
+  color: var(--yellow-10);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: background-color 120ms;
+}
+
+.pillButton:hover {
+  border-color: var(--yellow-80);
+}
+
+.pillButtonOn,
+.pillButtonOn:hover {
+  background: var(--yellow-60);
+  border-color: var(--yellow-60);
+  color: #000;
+}
+
+/* LOAD MORE (631:8432): filled #ffa202 pill, black 13px uppercase */
+.loadMore {
+  display: inline-flex;
+  align-items: center;
+  height: 35px;
+  padding: 0 15px;
+  border-radius: 100px;
+  background: var(--yellow-60);
+  color: #000;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.loadMore:hover {
+  background: var(--yellow-50);
+}
+
+/* ---- Loading ---- */
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.loadingIcon {
+  color: var(--yellow-60);
+}
+
+.skel {
+  display: block;
+  border-radius: var(--radius-card);
+  background: linear-gradient(90deg, var(--surface) 0%, var(--grey-100) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

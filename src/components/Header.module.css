@@ -68,6 +68,10 @@
   line-height: 1.2;
 }
 
+.search input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
 .search input::placeholder {
   color: var(--text-placeholder);
 }

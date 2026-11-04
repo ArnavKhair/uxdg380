@@ -15,6 +15,18 @@ import roadtrip from '../assets/playlists/roadtrip.png';
 import byeCover from '../assets/covers/bye.png';
 import hateThatCover from '../assets/covers/hate-that-i-made-you-love-me.png';
 import eternalCover from '../assets/covers/eternal-sunshine.png';
+import arianaAvatar from '../assets/search/ariana-grande.png';
+import arianaEssentials from '../assets/search/ariana-essentials.png';
+import holidayClassics from '../assets/search/new-holiday-classics.png';
+import noelSeason from '../assets/search/noel-season.png';
+import vocalsChills from '../assets/search/vocals-chills.png';
+import intoYouCover from '../assets/search/into-you-x-bye.png';
+import moodLateNight from '../assets/collections/mood-late-night.jpg';
+import moodHeartbreak from '../assets/collections/mood-heartbreak.jpg';
+import moodParty from '../assets/collections/mood-party.jpg';
+import blindingLightsCover from '../assets/covers/blinding-lights.png';
+import { albums } from './albums';
+import { songsByGenre } from './discover';
 import type { Activity, Playlist, Profile, Track } from './types';
 
 const MIN = 60_000;
@@ -51,6 +63,22 @@ export const profiles: Record<string, Profile> = {
   phoebe: { id: 'phoebe', name: 'Phoebe Bridgers', handle: 'phoebebridgers', avatar: phoebe, followers: 2310, following: 87 },
   top: { id: 'top', name: 'Twenty One Pilots', handle: 'twentyonepilots', avatar: top, followers: 28700, following: 12 },
   audiomack: { id: 'audiomack', name: 'Audiomack', handle: 'audiomack', avatar: null, followers: 1_240_000, following: 0 },
+  // Extra accounts from the Figma search results ("search bar", 253:2285), so searching "goose" finds several people.
+  goose1177: { id: 'goose1177', name: 'goose1177', avatar: null, followers: 0, following: 3 },
+  goose1100: { id: 'goose1100', name: 'goose1100', avatar: null, followers: 0, following: 1 },
+  // The "Accounts" result in the search frame (253:2079)
+  // Artist account so searching "The Weeknd" gets the same results layout as Ariana Grande.
+  // Avatar is the Hurry Up Tomorrow artwork, as on his album page.
+  weeknd: {
+    id: 'weeknd',
+    name: 'The Weeknd',
+    handle: 'theweeknd',
+    avatar: albums['hurry-up-tomorrow']?.cover ?? blindingLightsCover,
+    verified: true,
+    followers: 2_418_553,
+    following: 0,
+  },
+  ariana: { id: 'ariana', name: 'Ariana Grande', handle: 'arianagrande', avatar: arianaAvatar, verified: true, followers: 664_291, following: 0 },
 };
 
 export const tracks: Record<string, Track> = {
@@ -143,6 +171,111 @@ export const roadtripTracks: Track[] = [
   ariana('bye', 'bye', byeCover, 184),
   ariana('hate-that', 'hate that i made you love me', hateThatCover, 246),
   ariana('eternal-sunshine', 'eternal sunshine', eternalCover, 211),
+];
+
+/** The two songs under "SONGS & ALBUMS" in the search frame (253:2079), with the details it shows. */
+export const searchTracks: Track[] = [
+  {
+    ...roadtripTracks[0],
+    album: 'eternal sunshine',
+    releaseDate: '2026-05-21',
+    uploader: 'sturvi2306',
+    tag: 'Hip-Hop',
+  },
+  {
+    id: 'into-you-x-bye',
+    title: 'Into You X bye (altare remix)',
+    artist: 'Ariana Grande (mashup)',
+    cover: intoYouCover,
+    durationSec: 245,
+    releaseDate: '2026-07-28',
+    uploader: 'Vi',
+    tag: 'Pop',
+  },
+];
+
+const curated = (
+  id: string,
+  title: string,
+  cover: string,
+  description: string,
+  songs: Track[],
+): Playlist => ({
+  id,
+  title,
+  cover,
+  ownerId: 'audiomack',
+  tracks: songs,
+  genre: 'pop',
+  privacy: 'public',
+  description,
+  updatedAt: new Date('2026-10-01T12:00:00').getTime(),
+});
+
+/** The Weeknd's songs: Blinding Lights plus the Hurry Up Tomorrow tracklist (real iTunes previews). */
+const hurryUp = albums['hurry-up-tomorrow'];
+const blindingLights: Track = {
+  ...(Object.values(songsByGenre)
+    .flat()
+    .find((t) => t.id === 'blinding-lights') ?? {
+    id: 'blinding-lights',
+    title: 'Blinding Lights',
+    artist: 'The Weeknd',
+    cover: blindingLightsCover,
+    durationSec: 200,
+  }),
+  album: 'After Hours',
+  releaseDate: '2019-11-29',
+  uploader: 'theweeknd',
+  tag: 'R&B',
+};
+const weekndAlbumTracks: Track[] = (hurryUp?.tracks ?? []).map((t) => ({
+  ...t,
+  album: hurryUp.title,
+  uploader: 'theweeknd',
+}));
+// Solo tracks first, so the top results are his own songs rather than features.
+// Short interludes (under 90s) are left out of the picks.
+const weekndSolo = weekndAlbumTracks.filter((t) => t.artist === 'The Weeknd' && t.durationSec >= 90);
+const weekndTracks: Track[] = [blindingLights, ...weekndSolo, ...weekndAlbumTracks.filter((t) => t.artist !== 'The Weeknd')];
+
+/** Songs shown on the artist accounts' profile tabs (data/api.ts). */
+export const artistTracks: Record<string, Track[]> = {
+  weeknd: weekndTracks,
+};
+
+searchTracks.push(blindingLights, ...weekndSolo.slice(0, 2));
+
+/** Four playlists for The Weeknd's search results, laid out like the Ariana frame (253:2079). */
+const weekndPlaylists: Playlist[] = [
+  { ...curated('the-weeknd-essentials', 'The Weeknd Essentials', blindingLightsCover, 'The best songs by The Weeknd', weekndTracks.slice(0, 8)), ownerId: 'weeknd' },
+  curated('late-night-drive', 'Late Night Drive', moodLateNight, 'Neon-lit R&B for the empty highway', [
+    blindingLights,
+    ...weekndSolo.slice(2, 6),
+  ]),
+  curated('heartbreak-hotel', 'Heartbreak Hotel', moodHeartbreak, '', [weekndSolo[0] ?? blindingLights, roadtripTracks[1]]),
+  curated('synth-pop-revival', 'Synth-Pop Revival', moodParty, '', [blindingLights, ...weekndSolo.slice(6, 9)]),
+];
+
+/** The four playlists under "PLAYLISTS" in the search frame (253:2079). */
+export const searchPlaylists: Playlist[] = [
+  {
+    ...curated('ariana-essentials', 'Ariana Grande Essentials', arianaEssentials, 'The best songs by Ariana Grande', [
+      ...roadtripTracks,
+      searchTracks[1],
+    ]),
+    ownerId: 'ariana', // shows on her profile's Playlists tab
+  },
+  curated('new-holiday-classics', 'New Holiday Classics', holidayClassics, 'Give the holidays a modern spin', [
+    roadtripTracks[2],
+    roadtripTracks[0],
+  ]),
+  curated('noel-season-vol-1', 'Noel Season Vol. 1', noelSeason, '', [roadtripTracks[1], roadtripTracks[2]]),
+  curated('vocals-that-give-you-chills', 'Vocals That Give You Chills', vocalsChills, '', [
+    roadtripTracks[1],
+    searchTracks[1],
+  ]),
+  ...weekndPlaylists,
 ];
 
 /** Playlists that exist when the prototype starts; chart playlists are added in state/playlists.tsx. */

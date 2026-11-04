@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Search, Upload } from 'lucide-react';
 import logo from '../assets/brand/logo.svg';
 import { useSession } from '../state/session';
@@ -14,12 +14,6 @@ export function Header() {
   const navigate = useNavigate();
   const toast = useToast();
   const { signedIn, setSignedIn } = useSession();
-  const [query, setQuery] = useState('');
-
-  function submit(e: FormEvent) {
-    e.preventDefault();
-    navigate(`/search?q=${encodeURIComponent(query.trim())}`);
-  }
 
   function signIn(how: string) {
     setSignedIn(true);
@@ -37,19 +31,7 @@ export function Header() {
         </button>
       </div>
 
-      <form className={styles.search} role="search" onSubmit={submit}>
-        <Search size={ICON.control} className={styles.searchIcon} aria-hidden="true" />
-        <label htmlFor="global-search" className="visually-hidden">
-          Search
-        </label>
-        <input
-          id="global-search"
-          type="search"
-          placeholder="Search for artists, songs, albums!"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </form>
+      <SearchBar />
 
       <div className={styles.right}>
         {!signedIn && (
@@ -70,5 +52,49 @@ export function Header() {
         </Button>
       </div>
     </header>
+  );
+}
+
+/*
+ * Global search bar (Header "Form:margin", 721:12585). Enter opens the results page,
+ * /search?q=… (Figma "search bar" frames, 253:2079). While on that page the box keeps
+ * showing the current search so it can be edited and run again.
+ */
+function SearchBar() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [params] = useSearchParams();
+  const urlQuery = pathname === '/search' ? (params.get('q') ?? '') : '';
+  const [query, setQuery] = useState(urlQuery);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Keep the box showing the current search; empty it when leaving the results page.
+  useEffect(() => setQuery(urlQuery), [urlQuery]);
+
+  function submit(e: FormEvent) {
+    e.preventDefault();
+    const trimmed = query.trim();
+    if (!trimmed) return;
+    inputRef.current?.blur();
+    // A new search starts on the All tab.
+    navigate(`/search?q=${encodeURIComponent(trimmed)}`);
+  }
+
+  return (
+    <form className={styles.search} role="search" onSubmit={submit}>
+      <Search size={ICON.control} className={styles.searchIcon} aria-hidden="true" />
+      <label htmlFor="global-search" className="visually-hidden">
+        Search
+      </label>
+      <input
+        ref={inputRef}
+        id="global-search"
+        type="search"
+        placeholder="Search for artists, songs, albums!"
+        autoComplete="off"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+    </form>
   );
 }

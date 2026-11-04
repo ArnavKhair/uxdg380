@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchFeed } from '../data/api';
-import { suggestedProfiles } from '../data/mock';
+import { profiles, suggestedProfiles } from '../data/mock';
 import { useAsync } from '../state/useAsync';
 import { useScenario } from '../state/useScenario';
 import { usePlayer } from '../state/player';
@@ -23,6 +23,7 @@ export function FeedPage() {
   const scenario = useScenario('feed');
   const [state, retry] = useAsync(() => fetchFeed(scenario), [scenario]);
   const { signedIn } = useSession();
+  const { reupActivity } = useLibrary();
 
   if (!signedIn) return <GuestFeed />;
 
@@ -50,7 +51,17 @@ export function FeedPage() {
     );
   }
 
-  return state.data.length === 0 ? <EmptyFeed /> : <ActivityList items={state.data} />;
+  // Songs you Re-Up show up at the top of the feed, in the same "Re-Upped … ago" row as everyone else's.
+  const mine: Activity[] = reupActivity.map(({ track, at }) => ({
+    id: `my-reup-${track.id}-${at}`,
+    profile: profiles.me,
+    track,
+    type: 'reup',
+    at,
+  }));
+  const items = [...mine, ...state.data]; // yours are always the newest
+
+  return items.length === 0 ? <EmptyFeed /> : <ActivityList items={items} />;
 }
 
 function ActivityList({ items }: { items: Activity[] }) {

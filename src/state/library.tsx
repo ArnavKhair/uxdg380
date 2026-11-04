@@ -13,6 +13,8 @@ interface LibraryState {
   following: Set<string>;
   liked: Track[]; // newest first
   reupped: Track[];
+  /** Re-Ups made this session, newest first, with when they happened (shown in the Feed). */
+  reupActivity: { track: Track; at: number }[];
   isLiked: (trackId: string) => boolean;
   isReupped: (trackId: string) => boolean;
   toggleFollow: (profileId: string) => boolean;
@@ -36,6 +38,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
   const [following, setFollowing] = useState<Set<string>>(() => new Set(myInitialFollowing));
   const [liked, setLiked] = useState<Track[]>(myLikedTracks);
   const [reupped, setReupped] = useState<Track[]>(myReuppedTracks);
+  const [reupActivity, setReupActivity] = useState<{ track: Track; at: number }[]>([]);
   const [likedAlbums, setLikedAlbums] = useState<Set<string>>(() => new Set());
 
   const guarded = useCallback(
@@ -67,8 +70,16 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
     [guarded],
   );
   const toggleReup = useCallback(
-    (track: Track) => guarded('Re-Up songs', () => setReupped((l) => toggleTrack(l, track))),
-    [guarded],
+    (track: Track) =>
+      guarded('Re-Up songs', () => {
+        const removing = reupped.some((t) => t.id === track.id);
+        setReupped((l) => toggleTrack(l, track));
+        // Re-Upping posts to your followers' feeds (and yours); undoing it takes the post down.
+        setReupActivity((a) =>
+          removing ? a.filter((r) => r.track.id !== track.id) : [{ track, at: Date.now() }, ...a],
+        );
+      }),
+    [guarded, reupped],
   );
   const toggleAlbumLike = useCallback(
     (id: string) =>
@@ -88,6 +99,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
       following,
       liked,
       reupped,
+      reupActivity,
       isLiked: (id: string) => liked.some((t) => t.id === id),
       isReupped: (id: string) => reupped.some((t) => t.id === id),
       toggleFollow,
@@ -98,7 +110,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
       followerCount: (p: Profile) =>
         p.followers + Number(following.has(p.id)) - Number(myInitialFollowing.includes(p.id)),
     }),
-    [following, liked, reupped, likedAlbums, toggleFollow, toggleLike, toggleReup, toggleAlbumLike],
+    [following, liked, reupped, reupActivity, likedAlbums, toggleFollow, toggleLike, toggleReup, toggleAlbumLike],
   );
 
   return <LibraryContext.Provider value={value}>{children}</LibraryContext.Provider>;

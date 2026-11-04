@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { initialPlaylists, ME_ID } from '../data/mock';
+import { initialPlaylists, ME_ID, searchPlaylists } from '../data/mock';
 import { curatedPlaylists } from '../data/charts';
 import type { Playlist, Track } from '../data/types';
 import { useSession } from './session';
@@ -37,7 +37,7 @@ let nextId = 1;
 export function PlaylistsProvider({ children }: { children: ReactNode }) {
   const { signedIn } = useSession();
   const toast = useToast();
-  const [playlists, setPlaylists] = useState<Playlist[]>([...initialPlaylists, ...curatedPlaylists]);
+  const [playlists, setPlaylists] = useState<Playlist[]>([...searchPlaylists, ...initialPlaylists, ...curatedPlaylists]);
   const [addTrack, setAddTrack] = useState<Track | null>(null);
   const [form, setForm] = useState<FormState>(null);
   const [liked, setLiked] = useState<Set<string>>(new Set());

@@ -1,7 +1,20 @@
-import { baseFeed, myFollowers, myLikedTracks, myReuppedTracks, profileTracks, profiles, tracks, ME_ID } from './mock';
+import {
+  artistTracks,
+  baseFeed,
+  myFollowers,
+  myLikedTracks,
+  myReuppedTracks,
+  profileTracks,
+  profiles,
+  roadtripTracks,
+  searchTracks,
+  tracks,
+  ME_ID,
+} from './mock';
 import { charts as countryCharts, type Chart } from './charts';
 import { charts, moods, songsByGenre, trendingAlbums, trendingSongs, worldStories } from './discover';
-import type { Activity, ActivityType, Album, Collection, Profile, Track } from './types';
+import { search, type SearchResults } from './search';
+import type { Activity, ActivityType, Album, Collection, Playlist, Profile, Track } from './types';
 
 /*
  * Fake backend. Responses are shaped by the active scenario so every edge case
@@ -168,6 +181,19 @@ const otherContent: Record<string, Omit<ProfileContent, 'profile'>> = {
     followers: [profiles.me, profiles.paris, profiles.lofi],
     following: [profiles.painting, profiles.top],
   },
+  // Artist accounts from search: their own songs on Re-Ups, a few on Likes.
+  ariana: {
+    liked: [roadtripTracks[2], searchTracks[1]],
+    reups: [searchTracks[0], ...roadtripTracks.slice(1)],
+    followers: [profiles.me, profiles.paris, profiles.goose, profiles.phoebe],
+    following: [profiles.weeknd],
+  },
+  weeknd: {
+    liked: artistTracks.weeknd.slice(1, 3),
+    reups: artistTracks.weeknd.slice(0, 6),
+    followers: [profiles.me, profiles.paris, profiles.top, profiles.lofi],
+    following: [profiles.ariana],
+  },
 };
 
 function contentFor(id: string): Omit<ProfileContent, 'profile'> {
@@ -280,5 +306,20 @@ export function fetchChart(country: string, scenario: string): Promise<Chart> {
       return respond(chart, 2500);
     default:
       return respond(chart);
+  }
+}
+
+export function fetchSearch(query: string, playlists: Playlist[], scenario: string): Promise<SearchResults> {
+  switch (scenario) {
+    case 'loading':
+      return new Promise(() => {});
+    case 'error':
+      return fail('Search isn’t responding right now. Check your connection and try again.');
+    case 'no-results':
+      return respond(search('', playlists), 400);
+    case 'slow':
+      return respond(search(query, playlists), 2500);
+    default:
+      return respond(search(query, playlists), 300);
   }
 }

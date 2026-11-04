@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { CirclePause, CirclePlay, Headphones, Heart, Upload, Repeat2 } from 'lucide-react';
 import type { Activity, ActivityType } from '../data/types';
 import { timeAgo } from '../data/format';
+import { ME_ID } from '../data/mock';
 import { Avatar } from './Avatar';
 import styles from './ActivityRow.module.css';
 import { ICON } from './icons';
@@ -42,15 +43,16 @@ export function ActivityRow({ activity, isCurrent, isPlaying, onPlay }: Props) {
   // An artist's own upload just shows the title (Figma: "Stem the Flow" by Paris Paloma).
   const songLine = track.artist === profile.name ? track.title : `${track.title} - ${track.artist}`;
   const playingThis = isCurrent && isPlaying;
+  const profileLink = profile.id === ME_ID ? '/profile' : `/user/${profile.id}`;
 
   return (
     <li className={`${styles.row} ${isCurrent ? styles.current : ''}`}>
       <div className={styles.main}>
-        <Link to={`/user/${profile.id}`} className={styles.avatarLink} tabIndex={-1} aria-hidden="true">
+        <Link to={profileLink} className={styles.avatarLink} tabIndex={-1} aria-hidden="true">
           <Avatar src={profile.avatar} name={profile.name} size={78} />
         </Link>
         <div className={styles.text}>
-          <Link to={`/user/${profile.id}`} className={styles.name} title={profile.name}>
+          <Link to={profileLink} className={styles.name} title={profile.name}>
             {profile.name}
           </Link>
           <div className={styles.details}>

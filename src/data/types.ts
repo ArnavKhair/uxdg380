@@ -8,6 +8,7 @@ export interface Profile {
   bannerColor?: string;
   followers: number;
   following?: number;
+  verified?: boolean; // yellow check after the name (search "Accounts", 539:5290)
 }
 
 export interface Track {
@@ -18,6 +19,8 @@ export interface Track {
   durationSec: number;
   releaseDate?: string; // ISO date, shown on profile song cards
   tag?: string; // genre tag, e.g. "Afro-Soul"
+  album?: string; // shown as "Album: …" on search results
+  uploader?: string; // shown as "… by <uploader>" on search results
 }
 
 export interface Album {

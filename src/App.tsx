@@ -11,6 +11,7 @@ import { ProfilePage } from './pages/ProfilePage';
 import { ChartsPage } from './pages/ChartsPage';
 import { PlaylistPage } from './pages/PlaylistPage';
 import { AlbumPage } from './pages/AlbumPage';
+import { SearchPage } from './pages/SearchPage';
 import { ComingSoonPage } from './pages/ComingSoonPage';
 
 export default function App() {
@@ -30,7 +31,7 @@ export default function App() {
                     <Route path="/user/:id/:tab?" element={<ProfilePage />} />
                     <Route path="/playlist/:id" element={<PlaylistPage />} />
                     <Route path="/charts/:country?" element={<ChartsPage />} />
-                    <Route path="/search" element={<ComingSoonPage title="Search" />} />
+                    <Route path="/search" element={<SearchPage />} />
                     <Route path="/upload" element={<ComingSoonPage title="Upload" />} />
                     <Route path="/album/:id" element={<AlbumPage />} />
                     <Route path="/moods/*" element={<ComingSoonPage title="Moods" />} />
