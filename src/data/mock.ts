@@ -166,7 +166,7 @@ const ariana = (id: string, title: string, cover: string, durationSec: number): 
   tag: 'Pop',
 });
 
-/** Songs in "Roadtrip!" (Figma "playlist page", 182:1231). */
+/** Songs in "Playlist1" (Figma "playlist page", 182:1231). */
 export const roadtripTracks: Track[] = [
   ariana('bye', 'bye', byeCover, 184),
   ariana('hate-that', 'hate that i made you love me', hateThatCover, 246),
@@ -282,7 +282,7 @@ export const searchPlaylists: Playlist[] = [
 export const initialPlaylists: Playlist[] = [
   {
     id: 'roadtrip',
-    title: 'Roadtrip!',
+    title: 'Playlist1',
     cover: roadtrip,
     ownerId: ME_ID,
     tracks: roadtripTracks,

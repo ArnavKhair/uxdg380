@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
-import { myInitialFollowing, myLikedTracks, myReuppedTracks } from '../data/mock';
+import { myInitialFollowing } from '../data/mock';
 import type { Profile, Track } from '../data/types';
 import { useSession } from './session';
 import { useToast } from './toast';
@@ -36,8 +36,8 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
   const { signedIn } = useSession();
   const toast = useToast();
   const [following, setFollowing] = useState<Set<string>>(() => new Set(myInitialFollowing));
-  const [liked, setLiked] = useState<Track[]>(myLikedTracks);
-  const [reupped, setReupped] = useState<Track[]>(myReuppedTracks);
+  const [liked, setLiked] = useState<Track[]>([]);
+  const [reupped, setReupped] = useState<Track[]>([]);
   const [reupActivity, setReupActivity] = useState<{ track: Track; at: number }[]>([]);
   const [likedAlbums, setLikedAlbums] = useState<Set<string>>(() => new Set());
 

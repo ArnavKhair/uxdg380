@@ -79,7 +79,7 @@ export function search(rawQuery: string, playlists: Playlist[]): SearchResults {
 
   return {
     profiles: rank(people, query, (p) => [p.name, p.handle]),
-    // A playlist also matches on the artists inside it, so "Ariana Grande" finds Roadtrip!.
+    // A playlist also matches on the artists inside it, so "Ariana Grande" finds Playlist1.
     playlists: rank(playlists, query, (p) => [
       p.title,
       p.description,
